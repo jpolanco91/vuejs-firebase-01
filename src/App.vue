@@ -52,12 +52,12 @@ import FireBase from 'firebase'
 import toastr from 'toastr'
 
 let config = {
-  apiKey: " AIzaSyA5Bn7sjvs29EqnjbztqSWRWd7Regrq5o0",
-  authDomain: "vuejs-firebase-01-5ab50.firebaseapp.com",
-  databaseURL: "https://vuejs-firebase-01-5ab50.firebaseio.com/",
-  storageBucket: "vuejs-firebase-01-5ab50.appspot.com",
-  messagingSenderId: "346193167287",
-  projectId: "vuejs-firebase-01-5ab50"
+  apiKey: 'AIzaSyA5Bn7sjvs29EqnjbztqSWRWd7Regrq5o0',
+  authDomain: 'vuejs-firebase-01-5ab50.firebaseapp.com',
+  databaseURL: 'https://vuejs-firebase-01-5ab50.firebaseio.com/',
+  storageBucket: 'vuejs-firebase-01-5ab50.appspot.com',
+  messagingSenderId: '346193167287',
+  projectId: 'vuejs-firebase-01-5ab50'
 }
 
 let app = Firebase.initializeApp(config)
@@ -84,9 +84,9 @@ export default {
   methods: {
     addBook: function() {
       booksRef.push(this.newBook);
-      this.newBook.title = '';
-      this.newBook.author = '';
-      this.newBook.url = 'http://';
+      this.newBook.title = ''
+      this.newBook.author = ''
+      this.newBook.url = 'http://'
     },
 
     removeBook: function(book) {
