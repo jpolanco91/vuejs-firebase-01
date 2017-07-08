@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <img src="./assets/logo.png">
     <router-view></router-view>
     <div class="panel-body">
@@ -60,7 +60,7 @@ let config = {
   projectId: 'vuejs-firebase-01-5ab50'
 }
 
-let app = Firebase.initializeApp(config)
+let app = FireBase.initializeApp(config)
 let db = app.database()
 
 let booksRef = db.ref('books')
@@ -82,21 +82,17 @@ export default {
     }
   },
   methods: {
-    addBook: function() {
-      booksRef.push(this.newBook);
+    addBook: function () {
+      booksRef.push(this.newBook)
       this.newBook.title = ''
       this.newBook.author = ''
       this.newBook.url = 'http://'
     },
 
-    removeBook: function(book) {
+    removeBook: function (book) {
       booksRef.child(book['.key']).remove()
       toastr.success('Book removed sucessfully')
     }
-  },
-
-  components: {
-    Hello
   }
 }
 </script>
