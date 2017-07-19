@@ -1,49 +1,45 @@
 <template>
   <div id="app" class="container">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
     <div class="panel-body">
-      <table class="table table-stripped">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="book in books">
-            <td><a v-bind:href="book.url">{{book.title}}</a></td>
-            <td>{{book.author}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <!-- Vue Material table -->
+      <md-table v-once>
+          <md-table-header>
+              <md-table-row>
+                  <md-table-head>Title</md-table-head>
+                  <md-table-head>Author</md-table-head>
+              </md-table-row>
+          </md-table-header>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Add New Books</h3>
-      </div>
-      <div class="panel-body">
-        <form id="form" class="form-inline" v-on:submit.prevent="addBook">
-          <!-- Title -->
-          <div class="form-group">
-            <label for="bookTitle">Title:</label>
-            <input type="text" id="bookTitle" class="form-control" v-model="newBook.title">
-          </div>
-          <!-- Author -->
-          <div class="form-group">
-            <label for="bookAuthor">Author:</label>
-            <input type="text" id="bookAuthor" class="form-control" v-model="newBook.author">
-          </div>
-          <!-- URL -->
-          <div class="form-group">
-            <label for="bookUrl">Url:</label>
-            <input type="text" id="bookUrl" class="form-control" v-model="newBook.url">
-          </div>
-          <input type="submit" class="btn btn-primary" value="Add Book">
-        </form>
-      </div>
+          <md-table-body>
+              <md-table-row v-for="book in books" :key="book.title">
+                  <md-table-cell><a v-bind:href="book.url">{{book.title}}</a></md-table-cell>
+                  <md-table-cell>{{book.author}}</md-table-cell>
+              </md-table-row>
+          </md-table-body>
+      </md-table>
+      <!-- Vue Material table -->
     </div>
+    <!-- Input secton title -->
+    <md-toolbar>
+        <h3 class="md-title">Add Books</h3>
+    </md-toolbar>
+
+    <!-- Input fields -->
+    <form novalidate v-on:submit.prevent="addBook">
+        <md-input-container>
+            <label>Title</label>
+            <md-input v-model="newBook.title"></md-input>
+        </md-input-container>
+        <md-input-container>
+            <label>Author</label>
+            <md-input v-model="newBook.author"></md-input>
+        </md-input-container>
+        <md-input-container>
+            <label>URL</label>
+            <md-input v-model="newBook.url"></md-input>
+        </md-input-container>
+        <md-button type="submit" class="md-raised md-primary">Add Book</md-button>
+    </form>
   </div>
 </template>
 
